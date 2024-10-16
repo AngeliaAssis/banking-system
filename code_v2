@@ -44,7 +44,7 @@ def sacar(valor, saldo, extrato, limite, numero_saques, limite_saques):
     else:
         print("Operação falhou. O valor informado é inválido")
 
-    return saldo, extrato
+    return saldo, extrato, numero_saques
 
 def exibir_extrato(saldo, extrato):
     print('\nExtrato')
@@ -80,8 +80,8 @@ def criar_conta(agencia, numero_conta, usuarios):
     print("\nUsuário não encontrado, fluxo de criação de conta encerrado")
 
 def main():
-    LIMITE_SAQUES = 3
-    AGENCIA = "0001"
+    limite_saques = 3
+    agencia = "0001"
 
     saldo = 0
     limite = 500
@@ -101,7 +101,7 @@ def main():
         elif opcao == 's':
             print('Saque')
             valor = float(input("Informe o valor do saque: "))
-            saldo, extrato = sacar(valor, saldo, extrato, limite, numero_saques, LIMITE_SAQUES)
+            saldo, extrato, numero_saques = sacar(valor, saldo, extrato, limite, numero_saques, limite_saques)
 
         elif opcao == 'e':
             exibir_extrato(saldo, extrato=extrato)
@@ -111,7 +111,7 @@ def main():
 
         elif opcao == "nc":
             numero_conta = len(contas) + 1
-            conta = criar_conta(AGENCIA, numero_conta, usuarios)
+            conta = criar_conta(agencia, numero_conta, usuarios)
 
             if conta:
                 contas.append(conta)
@@ -121,5 +121,6 @@ def main():
 
         else:
             print('Operação inválida. Por favor, selecione novamente a operação desejada')
+
 
 main()
