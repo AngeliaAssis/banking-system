@@ -1,3 +1,4 @@
+#Otimizando o sistema bancario com POO usando classes
 import textwrap
 from abc import ABC, abstractclassmethod, abstractproperty
 from datetime import datetime
@@ -33,7 +34,7 @@ class Conta:
         self._cliente = cliente
         self._historico = Historico()
 
-    # Cria uma nova conta                
+    # Cria uma nova conta
     @classmethod
     def nova_conta(cls, cliente, numero):
         return cls(numero, cliente)
